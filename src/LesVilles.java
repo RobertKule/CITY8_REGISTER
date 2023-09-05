@@ -25,7 +25,7 @@ import com.mysql.cj.protocol.Resultset;
 
 public class LesVilles extends JFrame {
     protected static JTextField tfNomVille;
-    protected static JLabel lbTitrePrincipal = new JLabel("GESTION DES NOMS DE VILLES"),
+    protected static JLabel lbTitrePrincipal = new JLabel("GESTION \nDES NOMS DE VILLES"),
             lbNomVille = new JLabel("Entrez le nom de la ville :"), lbChoixVille = new JLabel("Choisir une ville");
     protected static JButton btEnregistre = new JButton("ENREGISTRER");
     protected static JComboBox cbListeVille = new JComboBox();
@@ -40,26 +40,27 @@ public class LesVilles extends JFrame {
         super("Enregistrement des Villes");
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(500, 500);
+        this.setSize(800, 700);
         this.setLocationRelativeTo(null);
         // le conteneur
         JPanel pann = (JPanel) this.getContentPane();
         pann.setBackground(new Color(25, 25, 25));
+        int H=this.getHeight(),L=this.getWidth();
 
         pann.setLayout(null);
         // le label titre
         lbTitrePrincipal.setForeground(new Color(255, 255, 255));
         lbTitrePrincipal.setBackground(new Color(214, 217, 223));
-        lbTitrePrincipal.setFont(new Font("SansSerif", Font.BOLD, 28));
-        lbTitrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
-        lbTitrePrincipal.setBounds(0, 10, 480, 90);
+       lbTitrePrincipal.setFont(new Font("robot", Font.BOLD, 50));
+       lbTitrePrincipal.setHorizontalAlignment(SwingConstants.CENTER);
+        lbTitrePrincipal.setBounds(25, 25, 550, 200);
         pann.add(lbTitrePrincipal);
         // label pour identifier la case de noms de villes
-        lbNomVille.setForeground(new Color(255, 255, 255));
-        lbNomVille.setFont(new Font("SansSerif", Font.PLAIN, 25));
-        lbNomVille.setHorizontalAlignment(SwingConstants.LEFT);
-        lbNomVille.setBounds(15, 110, 400, 40);
-        pann.add(lbNomVille);
+        // lbNomVille.setForeground(new Color(255, 255, 255));
+        // lbNomVille.setFont(new Font("SansSerif", Font.PLAIN, 25));
+        // lbNomVille.setHorizontalAlignment(SwingConstants.LEFT);
+        // lbNomVille.setBounds(15, 25, 400, 40);
+        // pann.add(lbNomVille);
         // la zone de texte pour écrire des villes
         tfNomVille = new JTextField();
         // évenement de ce textfield quand on y clique
@@ -76,34 +77,34 @@ public class LesVilles extends JFrame {
         tfNomVille.setToolTipText("Entrez ici le nom de votre ville");
         tfNomVille.setHorizontalAlignment(SwingConstants.CENTER);
         tfNomVille.setFont(new Font("SansSerif", Font.PLAIN, 25));
-        tfNomVille.setBounds(25, 150, 400, 40);
+        tfNomVille.setBounds(25, 250, 400, 50);
         pann.add(tfNomVille);
         tfNomVille.setColumns(10);
         // le bouton d'éxecution et des confirmation des actions
         btEnregistre.setForeground(new Color(25, 25, 112));
         btEnregistre.setBackground(new Color(224, 255, 255));
         btEnregistre.setFont(new Font("SansSerif", Font.BOLD | Font.ITALIC, 25));
-        btEnregistre.setBounds(115, 198, 221, 53);
+        btEnregistre.setBounds(430, 250, 100, 50);
         pann.add(btEnregistre);
         // label pour presenter le combobox qui affiche les villes
-        lbChoixVille.setForeground(new Color(255, 255, 255));
-        lbChoixVille.setHorizontalAlignment(SwingConstants.CENTER);
-        lbChoixVille.setFont(new Font("SansSerif", Font.PLAIN, 25));
-        lbChoixVille.setBounds(50, 325, 400, 40);
-        pann.add(lbChoixVille);
+        // lbChoixVille.setForeground(new Color(255, 255, 255));
+        // lbChoixVille.setHorizontalAlignment(SwingConstants.CENTER);
+        // lbChoixVille.setFont(new Font("SansSerif", Font.PLAIN, 25));
+        // lbChoixVille.setBounds(50, 325, 400, 40);
+        // pann.add(lbChoixVille);
         // combobox pour afficher/visualiser des villes crées
         cbListeVille.setForeground(new Color(25, 25, 112));
         cbListeVille.setBackground(new Color(224, 255, 255));
-        cbListeVille.setBounds(50, 381, 400, 45);
+        cbListeVille.setBounds(25, 350, 200, 50);
         pann.add(cbListeVille);
         // Label pour afficher les concepteurs de ce code
         JLabel lbTravaillerPar = new JLabel("powered by groupe 5 Génie elec-Info/L2");
         lbTravaillerPar.setFont(new Font("SansSerif", Font.PLAIN, 15));
         lbTravaillerPar.setForeground(new Color(255, 255, 255));
         lbTravaillerPar.setHorizontalAlignment(SwingConstants.CENTER);
-        lbTravaillerPar.setBounds(0, 438, 484, 23);
+        lbTravaillerPar.setBounds(0, 450, 450, 50);
         pann.add(lbTravaillerPar);
-        lbEtat.setBounds(84, 263, 290, 23);
+        lbEtat.setBounds(100, 305, 400, 25);
         pann.add(lbEtat);
         // evenement qui nous explique ce qui se passe en cliquant au bouton d'éxécution
         btEnregistre.addActionListener(new ActionListener() {
@@ -112,7 +113,7 @@ public class LesVilles extends JFrame {
                     ajouteUneVille(tfNomVille.getText());
                     lbEtat.setText("");
                     lbEtat.setForeground(pann.getBackground());
-
+                    tfNomVille.setText("Entrez ici le nom de la ville à enregistrez svp : ");
                 } else {
                     JOptionPane.showMessageDialog(null, "Veuillez d'abord remplir le champ de la ville",
                             "Message du champ vide", JOptionPane.INFORMATION_MESSAGE);
